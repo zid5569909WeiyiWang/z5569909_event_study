@@ -1,4 +1,4 @@
-""" z5286464_project2_main.py
+""" project2_main.py
 
 """
 # ----------------------------------------------------------------------------
@@ -28,7 +28,7 @@
 import zid_project2_etl as etl
 import zid_project2_characteristics as cha
 import zid_project2_portfolio as pf
-
+import util as util
 import pandas as pd
 
 
@@ -168,11 +168,8 @@ def get_avg(df: pd.DataFrame, year):
 
     """
     # <COMPLETE THIS PART>
-def get_avg(df, year, column):
     year_data = df[df.index.year == year]
-    avg_value = year_data[column].mean()
-    return avg_value
-
+    return year_data.mean(skipna=True)
 
 def get_cumulative_ret(df):
     """ Returns cumulative returns for input DataFrame.
@@ -200,12 +197,7 @@ def get_cumulative_ret(df):
 
     """
     # <COMPLETE THIS PART>
-
-
-def get_cumulative_ret(df):
-    cumulative_return = (1 + df).cumprod() - 1
-    return cumulative_return
-
+    return (1 + df).cumprod() - 1
 
 # ----------------------------------------------------------------------------
 # Part 8: Answer questions
